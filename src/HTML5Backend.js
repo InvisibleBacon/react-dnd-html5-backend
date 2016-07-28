@@ -359,18 +359,7 @@ export default class HTML5Backend {
   handleTopDragEnterCapture(e) {
     this.dragEnterTargetIds = [];
 
-    const isFirstEnter = this.enterLeaveCounter.enter(e.target);
-    if (!isFirstEnter || this.monitor.isDragging()) {
-      return;
-    }
-
-    const { dataTransfer } = e;
-    const nativeType = matchNativeItemType(dataTransfer);
-
-    if (nativeType) {
-      // A native item (such as file or URL) dragged from outside the document
-      this.beginDragNativeItem(nativeType);
-    }
+    this.enterLeaveCounter.enter(e.target);
   }
 
   handleDragEnter(e, targetId) {
